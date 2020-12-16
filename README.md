@@ -23,6 +23,6 @@ Basic flutter commands will we be executed by initialize this app.
 - flutter build apk --split-per-abi
 - flutter install apk
 
-## upcoming Features:
+## upcoming Feature:
 -----
 - Update process status in **Gsheets** or **ShreadSheet**
