@@ -26,3 +26,10 @@ Basic flutter commands will we be executed by initialize this app.
 ## upcoming Feature:
 -----
 - Update process status in **Gsheets** or **ShreadSheet**
+
+
+## v1.0.1 Features:
+-------
+### Feature Added:
+-------
+- Update process status in **Gsheets** or **ShreadSheet**
