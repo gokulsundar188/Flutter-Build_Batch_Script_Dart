@@ -20,9 +20,12 @@ class Message {
       case 'install':
         return RowColumn(
             errMsg: 'Install error', successMsg: 'Install Completed', row: 5);
+      case 'push':
+        return RowColumn(
+            errMsg: 'push error', successMsg: 'push Completed', row: 6);
       default:
         return RowColumn(
-            errMsg: 'Prcess error', successMsg: 'Pubget Completed', row: 1);
+            errMsg: 'Process error', successMsg: 'Process Completed', row: 1);
     }
   }
 }

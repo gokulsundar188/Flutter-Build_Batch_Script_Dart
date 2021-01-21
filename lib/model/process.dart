@@ -12,7 +12,9 @@ class ExeProcess {
       // ExeProcess(commandMode: cleanMode, command: flutter, arguments: clean),
       // ExeProcess(commandMode: pubgetMode, command: flutter, arguments: pubget),
       // ExeProcess(commandMode: buildMode, command: flutter, arguments: build),
-      ExeProcess(commandMode: installMode, command: flutter, arguments: install),
+      // ExeProcess(commandMode: installMode, command: flutter, arguments: install),
+      ExeProcess(commandMode: copyMode, command: copy, arguments: copyApk),
+      // ExeProcess(commandMode: pushMode, command: git, arguments: push),
     ];
   }
 }

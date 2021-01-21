@@ -42,12 +42,16 @@ void main(List<String> arguments) async {
             column_index: index,
             sheet: sheetObj);
       } else if (item.commandMode != installMode) {
-        await ExecuteCommand().executeCommand(
+        if (item.commandMode == copyMode) {
+        } else {
+          await ExecuteCommand().executeCommand(
             commandMode: item.commandMode,
             command: item.command,
             arguments: item.arguments,
             column_index: index,
             sheet: sheetObj);
+        }
+        
       } else {
         print('install mode error');
       }
