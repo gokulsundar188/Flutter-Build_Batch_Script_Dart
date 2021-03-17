@@ -1,3 +1,6 @@
+import 'package:console_full/constants/app_constants.dart';
+import 'package:console_full/constants/commands.dart';
+
 class RowColumn {
   int row;
   String errMsg;
@@ -10,31 +13,47 @@ class Message {
     switch (mode) {
       case 'pubget':
         return RowColumn(
-            errMsg: 'Pubget error', successMsg: 'Pubget Completed', row: 4);
+            errMsg: 'Pubget error',
+            successMsg: 'Pubget Completed',
+            row: pub_index);
       case 'clean':
         return RowColumn(
-            errMsg: 'Clean error', successMsg: 'Clean Completed', row: 2);
+            errMsg: 'Clean error',
+            successMsg: 'Clean Completed',
+            row: clean_index);
       case 'build':
         return RowColumn(
-            errMsg: 'Build error', successMsg: 'Build Completed', row: 3);
+            errMsg: 'Build error',
+            successMsg: 'Build Completed',
+            row: build_index);
       case 'install':
         return RowColumn(
-            errMsg: 'Install error', successMsg: 'Install Completed', row: 5);
+            errMsg: 'Install error',
+            successMsg: 'Install Completed',
+            row: install_index);
+      case 'add':
+        return RowColumn(
+            errMsg: 'add error', successMsg: 'add Completed', row: add_index);
+      case 'commit':
+        return RowColumn(
+            errMsg: 'commit error',
+            successMsg: 'commit Completed',
+            row: commit_index);
+      case 'pull':
+        return RowColumn(
+            errMsg: 'pull error',
+            successMsg: 'pull Completed',
+            row: pull_index);
       case 'push':
         return RowColumn(
-            errMsg: 'push error', successMsg: 'push Completed', row: 6);
+            errMsg: 'push error',
+            successMsg: 'push Completed',
+            row: push_index);
       default:
         return RowColumn(
-            errMsg: 'Process error', successMsg: 'Process Completed', row: 1);
+            errMsg: 'Process error',
+            successMsg: 'Process Completed',
+            row: common_index);
     }
   }
 }
-
-// project_name_index = 1
-// clean_index = 2
-// build_index = 3
-// pub_index = 4
-// install_index = 5
-// copy_index = 6
-// clone_index = 7
-// checkout_index = 8

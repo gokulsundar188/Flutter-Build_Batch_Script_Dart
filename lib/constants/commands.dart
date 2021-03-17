@@ -12,6 +12,6 @@ var copyApk = [
   '.\\build\\app\\outputs\\apk\\release\\app-armeabi-v7a-release.apk','D:\\hippo_project\\5_Build\\gokul_projects'
 ];
 var add = ['add', '.'];
-var commit = ['commit', '--am', '""'];
+var commit = ['commit', '-am', 'Code merge v1.37.8'];
 var pull = ['pull', 'origin', 'develop'];
 var push = ['push', 'origin', 'develop'];
