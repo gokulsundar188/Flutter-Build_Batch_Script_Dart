@@ -1,9 +1,14 @@
+String subFolderName = 'st4';
+var reportFile = 'D:\\hippo_project\\6_Documents\\status_report\\BuildStatus_$subFolderName.xlsx';
+
 String projectFolder =
-    'D:\\hippo_project\\1_Project_code\\2_LiveProjects\\gokul_projects\\idr_projects\\st11'; //Directory url
-String destinationFolder = 'Destination_Folder'; //Directory url
+    'D:\\hippo_project\\1_Project_code\\2_LiveProjects\\gokul_projects\\idr_projects\\$subFolderName'; //Directory url
+// 'D:\\hippo_project\\1_Project_code\\2_LiveProjects\\New_folder'; //Directory url
+String destinationFolder =
+    'D:\\hippo_project\\5_Build\\gokul_projects\\$subFolderName'; //Directory url
 
 bool install_apk = true;
-bool copy_apk = false;
+bool copy_apk = true;
 var all_folders = [];
 
 //flutter modes
@@ -56,4 +61,4 @@ const credentials = r'''
 
 const spreadsheetId =
     '1uv8xA8YuSjuT-kREk9Oy3gUamCH_HsR16PbD-jw5nds'; //Can get SpreadSheetId from your spread sheet Url
-const sheetName = 'Sheet1'; //Sheet name
+String sheetName = 'new2'; //Sheet name

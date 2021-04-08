@@ -21,6 +21,11 @@ class Message {
             errMsg: 'Clean error',
             successMsg: 'Clean Completed',
             row: clean_index);
+      case 'copy':
+        return RowColumn(
+            errMsg: 'copy error',
+            successMsg: 'copy Completed',
+            row: clean_index);
       case 'build':
         return RowColumn(
             errMsg: 'Build error',

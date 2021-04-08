@@ -13,8 +13,7 @@ void main(List<String> arguments) async {
   // final ss = await gsheets.spreadsheet(spreadsheetId);
   // final sheetObj = await ss.worksheetByTitle(sheetName);
 
-  var file = 'D:\\hippo_project\\6_Documents\\BuildStatus.xlsx';
-  var bytes = File(file).readAsBytesSync();
+  var bytes = File(reportFile).readAsBytesSync();
   // var bytes = File(file).read;
   var excel = Excel.decodeBytes(bytes);
   var sheetObject = excel[sheetName];
@@ -55,37 +54,85 @@ void main(List<String> arguments) async {
             columnIndex: project_name_index, rowIndex: index),
         folderName);
     for (var item in processList) {
-      if (item.commandMode == installMode && install_apk) {
+      if (item.commandMode == installMode) {
         await ExecuteCommand().executeCommand(
             commandMode: item.commandMode,
             command: item.command,
             arguments: item.arguments,
             column_index: index,
             sheet: sheetObject);
-      } else if (item.commandMode != installMode) {
-        if (item.commandMode == copyMode) {
-        } else {
-          await ExecuteCommand().executeCommand(
-              commandMode: item.commandMode,
-              command: item.command,
-              arguments: item.arguments,
-              column_index: index,
-              sheet: sheetObject);
-        }
+      } else if (item.commandMode == copyMode) {
+        print('copy');
+        path = '$projectFolder\\$folderName\\build\\app\\outputs\\apk\\release';
+
+        await copy(
+          path: path,
+          destinationPath: '$destinationFolder\\$folderName',
+          folderName: folderName,
+        );
       } else {
-        print('install mode error');
+        await ExecuteCommand().executeCommand(
+            commandMode: item.commandMode,
+            command: item.command,
+            arguments: item.arguments,
+            column_index: index,
+            sheet: sheetObject);
       }
       await excel.encode().then((onValue) {
-        File(join(file))
+        File(join(reportFile))
           ..createSync(recursive: true)
           ..writeAsBytesSync(onValue);
       });
     }
     await excel.encode().then((onValue) {
-      File(join(file))
+      File(join(reportFile))
         ..createSync(recursive: true)
         ..writeAsBytesSync(onValue);
     });
     index += 1;
+  }
+  print('All process done');
+}
+
+void copy({String path, String destinationPath, String folderName}) async {
+  try {
+    var root = await Directory(path);
+    if (root.existsSync()) {
+      for (var f in root.listSync()) {
+        if (f.path.contains('v7a')) {
+          print(f.path);
+          await Directory(destinationPath).exists().then((isExsist) async {
+            if (isExsist) {
+              await copyFile(
+                  file: f.path, newPath: '$destinationPath\\$folderName');
+            } else {
+              await Directory(destinationPath)
+                  .create(recursive: true)
+                  .then((Directory directory) async {
+                await copyFile(
+                    file: f.path, newPath: '$destinationPath\\$folderName');
+              });
+            }
+          });
+        }
+      }
+    } else {
+      print('Path not found');
+    }
+  } catch (e) {
+    print(e.toString());
+  }
+}
+
+void copyFile({String file, String newPath}) async {
+  try {
+    var f = File(file);
+    await f.copy('${newPath}.apk').then((r) {
+      print(r);
+    }).catchError((e) {
+      print(e.toString());
+    });
+  } catch (e) {
+    print(e.toString());
   }
 }
