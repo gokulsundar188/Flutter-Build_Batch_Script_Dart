@@ -44,6 +44,11 @@ class Message {
             errMsg: 'commit error',
             successMsg: 'commit Completed',
             row: commit_index);
+      case 'checkout':
+        return RowColumn(
+            errMsg: 'checkout error',
+            successMsg: 'checkout Completed',
+            row: checkout_index);
       case 'pull':
         return RowColumn(
             errMsg: 'pull error',
