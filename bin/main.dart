@@ -13,7 +13,8 @@ void main(List<String> arguments) async {
   // final ss = await gsheets.spreadsheet(spreadsheetId);
   // final sheetObj = await ss.worksheetByTitle(sheetName);
 
-  var bytes = File(reportFile).readAsBytesSync();
+  var file = await File(reportFile);
+  var bytes = await file.readAsBytesSync();
   // var bytes = File(file).read;
   var excel = Excel.decodeBytes(bytes);
   var sheetObject = excel[sheetName];
